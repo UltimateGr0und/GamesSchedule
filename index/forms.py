@@ -19,3 +19,20 @@ class CreateEventForm(forms.ModelForm):
         if len(title) > 20:
             raise ValidationError('Длина превышает 20 символов')
         return title
+
+class SendFeedbackForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+    class Meta:
+        model = Feedback
+        fields = ['name', 'email', 'content']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form__input'}),
+            'email': forms.TextInput(attrs={'class': 'form__input'}),
+            'content': forms.Textarea(attrs={'class': 'form__text'}),
+        }
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if len(email) > 20:
+            raise ValidationError('Длина превышает 20 символов')
+        return email

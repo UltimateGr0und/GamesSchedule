@@ -23,6 +23,7 @@ def show_header():
     menu = [
         {'title': 'Главная', 'url_name': 'home'},
         {'title': 'Добавление события', 'url_name': 'addevent'},
+        {'title': 'Обратная связь', 'url_name': 'feedback'},
         {'title': 'Супер хакер панель', 'url_name': 'blocked'},
     ]
     return {'menu': menu}

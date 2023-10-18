@@ -8,16 +8,16 @@
             {% for field in form %}
                 <div class="row m-2">
                     <div class="col-2">
-                        <label class="form__label" for="field.id_for_label">{{ field.label }}: </label>
+                        <label class="" for="field.id_for_label">{{ field.label }}: </label>
                     </div>
                     <div class="col-4">
                         {{ field }}
                     </div>
 
-                    <div class="form__error">{{ field.errors }}</div>
+                    <div class="">{{ field.errors }}</div>
                 </div>
             {% endfor %}
-            <button type="submit" class="form__button">Добавить</button>
+            <button type="submit" class="btn btn-primary">Добавить</button>
         </form>
     </div>
 {% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="m-3 title">{{ title }}</h1>
+        <div class="row">
+            <form action="{% url 'addevent' %}" method="post" class="form bg-dark p-2 text-light rounded col-7" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="row m-2 rounded">
+                        <div class="col-2">
+                            <label for="field.id_for_label">{{ field.label }}: </label>
+                        </div>
+                        <div class="col-4">
+                            {{ field }}
+                        </div>
+
+                        <div>{{ field.errors }}</div>
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary m-3">Отправить</button>
+            </form>
+            <div class="col-5 p-4">
+                <h3>Наши данные</h3>
+                <ul>
+                    <li>Наш дискорд: xxxxxxx</li>
+                    <li>Наш email: xxxxxxx@xxxx.com</li>
+                    <li>Наш номер телефона: x(xxx)xxx xx xx</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -28,3 +28,14 @@ class Category(models.Model):
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
         ordering = ['id']
+
+class Feedback(models.Model):
+    name = models.CharField(max_length=100, db_index=True, verbose_name='Имя')
+    email = models.CharField(max_length=100, db_index=True, verbose_name='Почта')
+    content = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='Текст')
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name = 'Обратная связь'
+        verbose_name_plural = 'Обратная связь'
+        ordering = ['id']
