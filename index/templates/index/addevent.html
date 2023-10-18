@@ -1,0 +1,23 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+    <div class="content">
+        <h1 class="m-3 title">{{ title }}</h1>
+        <form action="{% url 'addevent' %}" method="post" class="form container" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="row m-2">
+                    <div class="col-2">
+                        <label class="form__label" for="field.id_for_label">{{ field.label }}: </label>
+                    </div>
+                    <div class="col-4">
+                        {{ field }}
+                    </div>
+
+                    <div class="form__error">{{ field.errors }}</div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="form__button">Добавить</button>
+        </form>
+    </div>
+{% endblock %}

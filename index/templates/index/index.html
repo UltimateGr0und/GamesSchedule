@@ -1,0 +1,17 @@
+{% extends 'index/base.html' %}
+{% load static %}
+{% block content %}
+
+{% for event in events%}
+<div class="card m-3">
+  <div class="card-header">
+      {{event.category}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{event.title}}</h5>
+    <p class="card-text">{{event.content}}</p>
+    <a href="{{ event.get_absolute_url }}" class="btn btn-primary">Details</a>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
